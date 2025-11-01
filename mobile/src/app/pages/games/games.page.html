@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Games</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let m of games" (click)="goToReport(m.id)">
+      {{ m.home_team }} vs {{ m.away_team }}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,110 @@
+{
+  "info": {
+    "name": "MiniLiga Express API",
+    "_postman_id": "c7e2f5c9-4e5b-4562-bf8e-7f92d9c94b5e",
+    "description": "Colección Postman para probar los endpoints de la MiniLiga Express API (Laravel).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/teams",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/teams",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "teams"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/teams",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Lions\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/teams",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "teams"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/games (pendientes)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/games?played=false",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "games"],
+          "query": [
+            { "key": "played", "value": "false" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/games/{id}/result",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"home_score\": 2,\n  \"away_score\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/games/1/result",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "games", "1", "result"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/standings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/standings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "standings"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": { "type": "text/javascript", "exec": [] }
+    },
+    {
+      "listen": "test",
+      "script": { "type": "text/javascript", "exec": [] }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Ionic / Angular / Capacitor
+www/
+dist/
+android/
+ios/
+
+# SQLite databases
+*.db
+
+# Mac / VSCode / OS files
+.DS_Store
+.vscode/

@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  title: MiniLiga Express API
+  version: 1.0.0
+  description: API para gestionar equipos, partidos y clasificación de la MiniLiga Express.
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/teams:
+    get:
+      summary: Obtener todos los equipos
+      responses:
+        '200':
+          description: Lista de equipos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post:
+      summary: Crear un nuevo equipo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamCreate'
+      responses:
+        '201':
+          description: Equipo creado
+  /api/games:
+    get:
+      summary: Obtener todos los partidos (o pendientes)
+      parameters:
+        - name: played
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Lista de partidos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+  /api/games/{id}/result:
+    post:
+      summary: Registrar resultado de un partido
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchResult'
+      responses:
+        '200':
+          description: Resultado registrado correctamente
+  /api/standings:
+    get:
+      summary: Obtener tabla de posiciones
+      responses:
+        '200':
+          description: Standings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Standing'
+components:
+  schemas:
+    Team:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+    TeamCreate:
+      type: object
+      properties:
+        name: { type: string }
+      required: [name]
+    Match:
+      type: object
+      properties:
+        id: { type: integer }
+        home_team: { type: string }
+        away_team: { type: string }
+        home_score: { type: integer, nullable: true }
+        away_score: { type: integer, nullable: true }
+        played: { type: boolean }
+    MatchResult:
+      type: object
+      properties:
+        home_score: { type: integer }
+        away_score: { type: integer }
+      required: [home_score, away_score]
+    Standing:
+      type: object
+      properties:
+        team: { type: string }
+        points: { type: integer }
+        played: { type: integer }
+        goals_for: { type: integer }
+        goals_against: { type: integer }
+        goal_diff: { type: integer }
