@@ -11,13 +11,11 @@ export class ApiService {
 
   // Obtener partidos pendientes
   getPendingGames() {
-    // ⚠️ /game según tu ruta Laravel
     return this.http.get<any[]>(`${this.base}/api/game`);
   }
 
   // Reportar resultado
   reportResult(id: number, payload: { home_score: number; away_score: number }) {
-    // ⚠️ ruta Laravel es /games/{id}/result
     return this.http.post(`${this.base}/api/games/${id}/result`, payload);
   }
 }
