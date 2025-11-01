@@ -9,13 +9,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Obtener partidos pendientes (sin resultado)
+  // Obtener partidos pendientes
   getPendingGames() {
-    return this.http.get<any[]>(`${this.base}/api/games?played=false`);
+    // ⚠️ /game según tu ruta Laravel
+    return this.http.get<any[]>(`${this.base}/api/game`);
   }
 
   // Reportar resultado
   reportResult(id: number, payload: { home_score: number; away_score: number }) {
+    // ⚠️ ruta Laravel es /games/{id}/result
     return this.http.post(`${this.base}/api/games/${id}/result`, payload);
   }
 }

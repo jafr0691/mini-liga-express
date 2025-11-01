@@ -5,8 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'games', pathMatch: 'full' },
   { path: 'games', loadComponent: () => import('./pages/games/games.page').then(m => m.GamesPage) },
-  { path: 'report-result/:id', loadComponent: () => import('./pages/report-result/report-result.page').then(m => m.ReportResultPage) },
-  { path: 'tab', loadComponent: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)}
+  { path: 'report-result/:id', loadComponent: () => import('./pages/report-result/report-result.page').then(m => m.ReportResultPage) }
 ];
 
 @NgModule({
@@ -14,4 +13,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-
