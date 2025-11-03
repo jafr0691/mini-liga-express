@@ -49,6 +49,6 @@ class StandingService
                         ->sortByDesc('goals_for')
                         ->values();
 
-        return response()->json($sorted);
+        return $sorted->toArray();
     }
 }
