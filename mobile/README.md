@@ -31,6 +31,7 @@ RxJS
 mobile/
 │
 ├── src/
+
 │   ├── app/
 │   │   ├── pages/
 │   │   │   ├── matches/          # Lista de partidos sin resultado
