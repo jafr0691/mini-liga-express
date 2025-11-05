@@ -1,37 +1,59 @@
-# 📱 MiniLiga Express - Mobile
+# Web
 
-App móvil en Ionic para registrar resultados y listar partidos pendientes.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
 
----
+## Development server
 
-## 🚀 Instalación
+To start a local development server, run:
 
 ```bash
-cd mobile
-bash ../scripts/init_mobile.sh
-npm start
-App disponible en 👉 http://localhost:8100/
+ng serve
+```
 
-🔗 API Service
-src/app/services/api.service.ts se conecta al backend:
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-ts
-Copiar código
-getPendingMatches() {
-  return this.http.get<any[]>(`${this.base}/api/matches?played=false`);
-}
-reportResult(id: number, payload: { home_score: number; away_score: number }) {
-  return this.http.post(`${this.base}/api/matches/${id}/result`, payload);
-}
-🧭 Páginas
-MatchesPage: lista de partidos sin resultado
+## Code scaffolding
 
-ReportResultPage: formulario para registrar resultado
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-🧩 Capacitor
-Para abrir en Android:
+```bash
+ng generate component component-name
+```
 
-bash
-Copiar código
-npx cap add android
-npx cap open android
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -2,20 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'home_team_id',
-        'away_team_id',
-        'home_score',
-        'away_score',
-        'played_at'
-    ];
+    protected $fillable = ['home_team_id', 'away_team_id', 'match_date', 'is_played'];
 
     public function homeTeam()
     {
@@ -26,4 +17,10 @@ class Game extends Model
     {
         return $this->belongsTo(Team::class, 'away_team_id');
     }
+
+    public function result()
+    {
+        return $this->hasOne(Result::class);
+    }
 }
+

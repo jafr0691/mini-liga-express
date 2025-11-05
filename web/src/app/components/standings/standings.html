@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-3">Clasificación</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Equipo</th>
+        <th>Puntos</th>
+        <th>GF</th>
+        <th>GC</th>
+        <th>Dif</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of standings; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ t.name }}</td>
+        <td>{{ t.points }}</td>
+        <td>{{ t.goals_for }}</td>
+        <td>{{ t.goals_against }}</td>
+        <td>{{ t.goal_diff }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

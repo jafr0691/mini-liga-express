@@ -1,65 +1,48 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Result;
+use App\Models\Game;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function store(Request $request, $id)
     {
-        //
-    }
+        $game = Game::findOrFail($id);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        if ($game->is_played) {
+            return response()->json(['message' => 'Game already played'], 400);
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $validated = $request->validate([
+            'home_score' => 'required|integer|min:0',
+            'away_score' => 'required|integer|min:0',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Result $result)
-    {
-        //
-    }
+        $result = Result::create([
+            'game_id' => $game->id,
+            'home_score' => $validated['home_score'],
+            'away_score' => $validated['away_score'],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Result $result)
-    {
-        //
-    }
+        $game->update(['is_played' => true]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Result $result)
-    {
-        //
-    }
+        $homeTeam = $game->homeTeam;
+        $awayTeam = $game->awayTeam;
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Result $result)
-    {
-        //
+        if ($validated['home_score'] > $validated['away_score']) {
+            $homeTeam->increment('points', 3);
+        } elseif ($validated['home_score'] < $validated['away_score']) {
+            $awayTeam->increment('points', 3);
+        } else {
+            $homeTeam->increment('points', 1);
+            $awayTeam->increment('points', 1);
+        }
+
+        return response()->json($result, 201);
     }
 }

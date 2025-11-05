@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-3">Equipos</h2>
+
+  <div class="input-group mb-3">
+    <input [(ngModel)]="newTeam" placeholder="Nombre del equipo" class="form-control">
+    <button class="btn btn-primary" (click)="createTeam()">Agregar</button>
+  </div>
+
+  <ul class="list-group">
+    <li *ngFor="let team of teams" class="list-group-item">
+      {{ team.name }}
+    </li>
+  </ul>
+</div>

@@ -1,9 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\TeamController;
-use App\Http\Controllers\Api\GameController;
-use App\Http\Controllers\Api\StandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('teams', [TeamController::class,'index']);
+Route::post('teams', [TeamController::class,'store']);
+Route::get('games', [GameController::class,'index']);
+Route::post('games/{id}/result', [ResultController::class,'store']);
+Route::get('standings', [StandingsController::class,'index']);
 
-Route::get('/teams', [TeamController::class, 'index']);
-Route::post('/teams', [TeamController::class, 'store']);
-
-Route::get('/game', [GameController::class, 'index']);
-Route::post('/games/{id}/result', [GameController::class, 'reportResult']);
-
-Route::get('/standings', [StandingController::class, 'index']);
