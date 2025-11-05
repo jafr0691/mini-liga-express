@@ -33,7 +33,7 @@ mobile/
 ├── src/
 │   ├── app/
 │   │   ├── pages/
-│   │   │   ├── games/          # Lista de partidos sin resultado
+│   │   │   ├── matches/          # Lista de partidos sin resultado
 │   │   │   └── report-result/    # Página para registrar resultados
 │   │   ├── services/
 │   │   │   └── api.service.ts    # Conexión HTTP con el backend Laravel
@@ -51,6 +51,7 @@ mobile/
 ├── capacitor.config.ts           # Configuración de Capacitor
 ├── package.json                  # Dependencias del proyecto
 └── README.md                     # Este archivo
+
 
 ⚙️ Instalación y configuración
 1️⃣ Clonar el repositorio
