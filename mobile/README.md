@@ -27,33 +27,6 @@ TypeScript
 
 RxJS
 
-📂 Estructura del proyecto
-mobile/
-│
-├── src/
-
-│   ├── app/
-│   │   ├── pages/
-│   │   │   ├── matches/          # Lista de partidos sin resultado
-│   │   │   └── report-result/    # Página para registrar resultados
-│   │   ├── services/
-│   │   │   └── api.service.ts    # Conexión HTTP con el backend Laravel
-│   │   ├── app.component.ts      # Componente raíz
-│   │   ├── app.routes.ts         # Definición de rutas
-│   │   └── app.module.ts         # Configuración principal
-│   │
-│   ├── environments/
-│   │   ├── environment.ts        # Configuración local (API base URL)
-│   │   └── environment.prod.ts   # Configuración producción
-│   │
-│   ├── theme/                    # Estilos globales (CSS / SCSS)
-│   └── index.html                # HTML principal
-│
-├── capacitor.config.ts           # Configuración de Capacitor
-├── package.json                  # Dependencias del proyecto
-└── README.md                     # Este archivo
-
-
 ⚙️ Instalación y configuración
 1️⃣ Clonar el repositorio
 git clone git@github.com:jafr0691/mini-liga-express.git
